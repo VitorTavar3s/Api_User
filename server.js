@@ -16,9 +16,15 @@ app.get('/users', (req,res)=>{
     res.json(users);
 });
 
+app.put('/users/:id', (req, res) => {
+    const { id } = req.params;
+    const { nome, email, nome_curso } = req.body;
+    const updated_user = update(id, { nome, email, nome_curso });
+    res.json(updated_user);
+});
+
 app.delete('/users', (req,res)=>{
-    const users = findAll();
-    res.json(users);
+    
 });
 
 app.listen(port, () => {
