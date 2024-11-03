@@ -23,8 +23,10 @@ app.put('/users/:id', (req, res) => {
     res.json(updated_user);
 });
 
-app.delete('/users', (req,res)=>{
-    
+app.delete('/users/:id', (req,res)=>{
+    const { id } = req.params;
+    remove(id);
+    res.status(204).send();
 });
 
 app.listen(port, () => {
